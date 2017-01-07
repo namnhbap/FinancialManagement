@@ -11,7 +11,9 @@
     tools:context="com.example.nguyennam.financialmanagement.MainActivity">
 
     <TextView
+        android:id="@+id/gotoCal"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Hello World!" />
+        android:text="Hello World!"
+        android:textSize="30sp"/>
 </RelativeLayout>
