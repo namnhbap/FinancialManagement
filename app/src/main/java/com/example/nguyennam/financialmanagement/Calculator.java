@@ -6,6 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 
 /**
  * Created by NguyenNam on 1/7/2017.
@@ -20,163 +21,163 @@ public class Calculator extends AppCompatActivity implements View.OnClickListene
         super.onCreate(savedInstanceState);
         setContentView(R.layout.calculator);
 
-        Button btn0 = (Button) findViewById(R.id.btn0);
+        Button btn0 = (Button) findViewById(R.id.btnKey0);
         btn0.setOnClickListener(this);
 
-        Button btnPhay = (Button) findViewById(R.id.btnPhay);
+        Button btnPhay = (Button) findViewById(R.id.btnKeyDot);
         btnPhay.setOnClickListener(this);
 
-        Button btn30 = (Button) findViewById(R.id.btn30);
+        Button btn30 = (Button) findViewById(R.id.btnKey000);
         btn30.setOnClickListener(this);
 
-        Button btnBang = (Button) findViewById(R.id.btnBang);
+        Button btnBang = (Button) findViewById(R.id.btnKeyEqual);
         btnBang.setOnClickListener(this);
 
-        Button btn1 = (Button) findViewById(R.id.btn1);
+        Button btn1 = (Button) findViewById(R.id.btnKey1);
         btn1.setOnClickListener(this);
 
-        Button btn2 = (Button) findViewById(R.id.btn2);
+        Button btn2 = (Button) findViewById(R.id.btnKey2);
         btn2.setOnClickListener(this);
 
-        Button btn3 = (Button) findViewById(R.id.btn3);
+        Button btn3 = (Button) findViewById(R.id.btnKey3);
         btn3.setOnClickListener(this);
 
-        Button btn4 = (Button) findViewById(R.id.btn4);
+        Button btn4 = (Button) findViewById(R.id.btnKey4);
         btn4.setOnClickListener(this);
 
-        Button btn5 = (Button) findViewById(R.id.btn5);
+        Button btn5 = (Button) findViewById(R.id.btnKey5);
         btn5.setOnClickListener(this);
 
-        Button btn6 = (Button) findViewById(R.id.btn6);
+        Button btn6 = (Button) findViewById(R.id.btnKey6);
         btn6.setOnClickListener(this);
 
-        Button btnTru = (Button) findViewById(R.id.btnTru);
+        Button btnTru = (Button) findViewById(R.id.btnKeyMinus);
         btnTru.setOnClickListener(this);
 
-        Button btn7 = (Button) findViewById(R.id.btn7);
+        Button btn7 = (Button) findViewById(R.id.btnKey7);
         btn7.setOnClickListener(this);
 
-        Button btn8 = (Button) findViewById(R.id.btn8);
+        Button btn8 = (Button) findViewById(R.id.btnKey8);
         btn8.setOnClickListener(this);
 
-        Button btn9 = (Button) findViewById(R.id.btn9);
+        Button btn9 = (Button) findViewById(R.id.btnKey9);
         btn9.setOnClickListener(this);
 
-        Button btnCong = (Button) findViewById(R.id.btnCong);
-        btnCong.setOnClickListener(this);
+        Button btnPlus = (Button) findViewById(R.id.btnKeyPlus);
+        btnPlus.setOnClickListener(this);
 
-        Button btnC = (Button) findViewById(R.id.btnC);
+        Button btnC = (Button) findViewById(R.id.btnKeyC);
         btnC.setOnClickListener(this);
 
-        Button btnNhan = (Button) findViewById(R.id.btnNhan);
-        btnNhan.setOnClickListener(this);
+        Button btnMulti = (Button) findViewById(R.id.btnKeyMulti);
+        btnMulti.setOnClickListener(this);
 
-        Button btnChia = (Button) findViewById(R.id.btnChia);
-        btnChia.setOnClickListener(this);
+        Button btnDivide = (Button) findViewById(R.id.btnKeyDivide);
+        btnDivide.setOnClickListener(this);
 
-        Button btnBack = (Button) findViewById(R.id.btnBack);
+        ImageButton btnBack = (ImageButton) findViewById(R.id.btnKeyBack);
         btnBack.setOnClickListener(this);
 
     }
 
     @Override
     public void onClick(View v) {
-        EditText edtTinh = (EditText) findViewById(R.id.edtTinh);
-        Button btnChangeBang = (Button) findViewById(R.id.btnBang);
+        EditText edtTinh = (EditText) findViewById(R.id.edtDisplay);
+        Button btnChangeBang = (Button) findViewById(R.id.btnKeyEqual);
         String text;
-        String xong = "Xong";
+        String xong = "OK";
         String bang = "=";
 
         switch (v.getId()){
-            case R.id.btn0:
+            case R.id.btnKey0:
                 text = edtTinh.getText().toString() + "0";
                 edtTinh.setText(text);
                 break;
 
-            case R.id.btn1:
+            case R.id.btnKey1:
                 text = edtTinh.getText().toString() + "1";
                 edtTinh.setText(text);
                 break;
 
-            case R.id.btn2:
+            case R.id.btnKey2:
                 text = edtTinh.getText().toString() + "2";
                 edtTinh.setText(text);
                 break;
 
-            case R.id.btn3:
+            case R.id.btnKey3:
                 text = edtTinh.getText().toString() + "3";
                 edtTinh.setText(text);
                 break;
 
-            case R.id.btn4:
+            case R.id.btnKey4:
                 text = edtTinh.getText().toString() + "4";
                 edtTinh.setText(text);
                 break;
 
-            case R.id.btn5:
+            case R.id.btnKey5:
                 text = edtTinh.getText().toString() + "5";
                 edtTinh.setText(text);
                 break;
 
-            case R.id.btn6:
+            case R.id.btnKey6:
                 text = edtTinh.getText().toString() + "6";
                 edtTinh.setText(text);
                 break;
 
-            case R.id.btn7:
+            case R.id.btnKey7:
                 text = edtTinh.getText().toString() + "7";
                 edtTinh.setText(text);
                 break;
 
-            case R.id.btn8:
+            case R.id.btnKey8:
                 text = edtTinh.getText().toString() + "8";
                 edtTinh.setText(text);
                 break;
 
-            case R.id.btn9:
+            case R.id.btnKey9:
                 text = edtTinh.getText().toString() + "9";
                 edtTinh.setText(text);
                 break;
 
-            case R.id.btn30:
+            case R.id.btnKey000:
                 text = edtTinh.getText().toString() + "000";
                 edtTinh.setText(text);
                 break;
 
-            case R.id.btnPhay:
+            case R.id.btnKeyDot:
                 text = edtTinh.getText().toString() + ".";
                 edtTinh.setText(text);
                 break;
 
-            case R.id.btnC:
+            case R.id.btnKeyC:
                 edtTinh.setText("");
                 break;
 
-            case R.id.btnBack:
+            case R.id.btnKeyBack:
                 edtTinh.setText(catKyTuCuoi(String.valueOf(edtTinh.getText())));
                 break;
 
-            case R.id.btnCong:
+            case R.id.btnKeyPlus:
                 text = edtTinh.getText().toString() + "+";
                 edtTinh.setText(text);
                 break;
 
-            case R.id.btnTru:
+            case R.id.btnKeyMinus:
                 text = edtTinh.getText().toString() + "-";
                 edtTinh.setText(text);
                 break;
 
-            case R.id.btnNhan:
+            case R.id.btnKeyMulti:
                 text = edtTinh.getText().toString() + "*";
                 edtTinh.setText(text);
                 break;
 
-            case R.id.btnChia:
+            case R.id.btnKeyDivide:
                 text = edtTinh.getText().toString() + "/";
                 edtTinh.setText(text);
                 break;
 
-            case R.id.btnBang:
+            case R.id.btnKeyEqual:
                 if (btnChangeBang.getText().toString().equals("=")){
                     String result = Double.toString((double)Math.round(eval(String.valueOf(edtTinh.getText()))*10)/10);
                     String s;

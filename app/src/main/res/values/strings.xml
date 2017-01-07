@@ -1,22 +1,23 @@
 <resources>
     <string name="app_name">Financial Management</string>
-    <string name="btnC">C</string>
-    <string name="btnNhan">*</string>
-    <string name="btnChia">/</string>
-    <string name="btnBack">Back</string>
-    <string name="btn7">7</string>
-    <string name="btn8">8</string>
-    <string name="btn9">9</string>
-    <string name="btnCong">+</string>
-    <string name="btn4">4</string>
-    <string name="btn5">5</string>
-    <string name="btn6">6</string>
-    <string name="btnTru">-</string>
-    <string name="btn3">3</string>
-    <string name="btn2">2</string>
-    <string name="btn1">1</string>
-    <string name="btn0">0</string>
-    <string name="btnPhay">.</string>
-    <string name="btn30">000</string>
-    <string name="btnBang">Xong</string>
+    <string name="Key1">1</string>
+    <string name="Key2">2</string>
+    <string name="Key3">3</string>
+    <string name="Key4">4</string>
+    <string name="Key5">5</string>
+    <string name="Key6">6</string>
+    <string name="Key7">7</string>
+    <string name="Key8">8</string>
+    <string name="Key9">9</string>
+    <string name="Key0">0</string>
+    <string name="KeyC">C</string>
+    <string name="KeyDivide">÷</string>
+    <string name="KeyMulti">×</string>
+    <string name="KeyMinus">-</string>
+    <string name="KeyAdd">+</string>
+    <string name="KeyDot">,</string>
+    <string name="KeyEqual">=</string>
+    <string name="Key000">000</string>
+    <string name="KeyDone">OK</string>
+    <string name="noname" />
 </resources>

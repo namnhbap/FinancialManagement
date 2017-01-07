@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <Button
+        android:id="@+id/btnSymbol"
+        android:background="@drawable/selector_common_gray"
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        android:text="đ"
+        android:textSize="20sp"
+        android:minWidth="40dp"
+        android:layout_marginRight="5dp"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"/>
+
+    <TextView
+        android:id="@+id/txtAmount"
+        android:background="@color/white"
+        android:clickable="true"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1.0"
+        android:text="So tien"
+        style="@style/InputMoneyKeyboard"
+        android:layout_centerVertical="true"
+        android:layout_alignParentLeft="true"
+        android:layout_toLeftOf="@id/btnSymbol"
+        android:gravity="end"
+        android:paddingRight="5dp"/>
+
+</RelativeLayout>
