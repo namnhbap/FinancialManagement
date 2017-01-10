@@ -1,9 +1,14 @@
 package com.example.nguyennam.financialmanagement;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
+import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
@@ -12,78 +17,90 @@ import android.widget.ImageButton;
  * Created by NguyenNam on 1/7/2017.
  */
 
-public class Calculator extends AppCompatActivity implements View.OnClickListener {
+public class Calculator extends Fragment implements View.OnClickListener {
 
     public static final String EXTRA_DATA = "EXTRA_DATA";
+    DataPassListener mCallback;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.calculator);
+    public void onAttach(Context context) {
+        super.onAttach(context);
+    }
 
-        Button btn0 = (Button) findViewById(R.id.btnKey0);
+
+
+    public interface DataPassListener{
+        public void passData(String data);
+    }
+
+    @Nullable
+    @Override
+    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        View view = inflater.inflate(R.layout.calculator, container, false);
+
+        Button btn0 = (Button) view.findViewById(R.id.btnKey0);
         btn0.setOnClickListener(this);
 
-        Button btnPhay = (Button) findViewById(R.id.btnKeyDot);
+        Button btnPhay = (Button) view.findViewById(R.id.btnKeyDot);
         btnPhay.setOnClickListener(this);
 
-        Button btn30 = (Button) findViewById(R.id.btnKey000);
+        Button btn30 = (Button) view.findViewById(R.id.btnKey000);
         btn30.setOnClickListener(this);
 
-        Button btnBang = (Button) findViewById(R.id.btnKeyEqual);
+        Button btnBang = (Button) view.findViewById(R.id.btnKeyEqual);
         btnBang.setOnClickListener(this);
 
-        Button btn1 = (Button) findViewById(R.id.btnKey1);
+        Button btn1 = (Button) view.findViewById(R.id.btnKey1);
         btn1.setOnClickListener(this);
 
-        Button btn2 = (Button) findViewById(R.id.btnKey2);
+        Button btn2 = (Button) view.findViewById(R.id.btnKey2);
         btn2.setOnClickListener(this);
 
-        Button btn3 = (Button) findViewById(R.id.btnKey3);
+        Button btn3 = (Button) view.findViewById(R.id.btnKey3);
         btn3.setOnClickListener(this);
 
-        Button btn4 = (Button) findViewById(R.id.btnKey4);
+        Button btn4 = (Button) view.findViewById(R.id.btnKey4);
         btn4.setOnClickListener(this);
 
-        Button btn5 = (Button) findViewById(R.id.btnKey5);
+        Button btn5 = (Button) view.findViewById(R.id.btnKey5);
         btn5.setOnClickListener(this);
 
-        Button btn6 = (Button) findViewById(R.id.btnKey6);
+        Button btn6 = (Button) view.findViewById(R.id.btnKey6);
         btn6.setOnClickListener(this);
 
-        Button btnTru = (Button) findViewById(R.id.btnKeyMinus);
+        Button btnTru = (Button) view.findViewById(R.id.btnKeyMinus);
         btnTru.setOnClickListener(this);
 
-        Button btn7 = (Button) findViewById(R.id.btnKey7);
+        Button btn7 = (Button) view.findViewById(R.id.btnKey7);
         btn7.setOnClickListener(this);
 
-        Button btn8 = (Button) findViewById(R.id.btnKey8);
+        Button btn8 = (Button) view.findViewById(R.id.btnKey8);
         btn8.setOnClickListener(this);
 
-        Button btn9 = (Button) findViewById(R.id.btnKey9);
+        Button btn9 = (Button) view.findViewById(R.id.btnKey9);
         btn9.setOnClickListener(this);
 
-        Button btnPlus = (Button) findViewById(R.id.btnKeyPlus);
+        Button btnPlus = (Button) view.findViewById(R.id.btnKeyPlus);
         btnPlus.setOnClickListener(this);
 
-        Button btnC = (Button) findViewById(R.id.btnKeyC);
+        Button btnC = (Button) view.findViewById(R.id.btnKeyC);
         btnC.setOnClickListener(this);
 
-        Button btnMulti = (Button) findViewById(R.id.btnKeyMulti);
+        Button btnMulti = (Button) view.findViewById(R.id.btnKeyMulti);
         btnMulti.setOnClickListener(this);
 
-        Button btnDivide = (Button) findViewById(R.id.btnKeyDivide);
+        Button btnDivide = (Button) view.findViewById(R.id.btnKeyDivide);
         btnDivide.setOnClickListener(this);
 
-        ImageButton btnBack = (ImageButton) findViewById(R.id.btnKeyBack);
+        ImageButton btnBack = (ImageButton) view.findViewById(R.id.btnKeyBack);
         btnBack.setOnClickListener(this);
-
+        return view;
     }
 
     @Override
     public void onClick(View v) {
-        EditText edtTinh = (EditText) findViewById(R.id.edtDisplay);
-        Button btnChangeBang = (Button) findViewById(R.id.btnKeyEqual);
+        EditText edtTinh = (EditText) v.findViewById(R.id.edtDisplay);
+        Button btnChangeBang = (Button) v.findViewById(R.id.btnKeyEqual);
         String text;
         String xong = "OK";
         String bang = "=";
@@ -194,11 +211,13 @@ public class Calculator extends AppCompatActivity implements View.OnClickListene
                     btnChangeBang.setText(xong);
                     edtTinh.setText(result);
                 }else {
-                    final Intent data = new Intent();
                     String str = String.valueOf(edtTinh.getText());
-                    data.putExtra(EXTRA_DATA, str);
-                    setResult(RESULT_OK, data);
-                    finish();
+                    mCallback.passData(str);
+//                    final Intent data = new Intent();
+//                    String str = String.valueOf(edtTinh.getText());
+//                    data.putExtra(EXTRA_DATA, str);
+//                    setResult(RESULT_OK, data);
+//                    finish();
                 }
 
                 break;
@@ -213,12 +232,6 @@ public class Calculator extends AppCompatActivity implements View.OnClickListene
         }
         edtTinh.setSelection(edtTinh.length()); //set cursor cuoi text
 
-    }
-
-    @Override
-    public void onBackPressed() {
-        super.onBackPressed();
-        setResult(RESULT_CANCELED);
     }
 
     private String catKyTuCuoi(String str) {
