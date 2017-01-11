@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,11 +14,34 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 
+import static android.content.ContentValues.TAG;
+
 /**
  * Created by NguyenNam on 1/7/2017.
  */
 
 public class Calculator extends Fragment implements View.OnClickListener {
+
+    Button btn0;
+    Button btnDot;
+    Button btn000;
+    Button btnEqual;
+    Button btn1;
+    Button btn2;
+    Button btn3;
+    Button btn4;
+    Button btn5;
+    Button btn6;
+    Button btnMinus;
+    Button btn7;
+    Button btn8;
+    Button btn9;
+    Button btnPlus;
+    Button btnC;
+    Button btnMulti;
+    Button btnDivide;
+    ImageButton btnBack;
+    EditText edtTinh;
 
     public static final String EXTRA_DATA = "EXTRA_DATA";
     DataPassListener mCallback;
@@ -25,9 +49,13 @@ public class Calculator extends Fragment implements View.OnClickListener {
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
+        try {
+            mCallback = (DataPassListener)context;
+        } catch (ClassCastException e) {
+            throw new ClassCastException(context.toString()
+                    + " must implement DataPassListener");
+        }
     }
-
-
 
     public interface DataPassListener{
         public void passData(String data);
@@ -38,69 +66,70 @@ public class Calculator extends Fragment implements View.OnClickListener {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.calculator, container, false);
 
-        Button btn0 = (Button) view.findViewById(R.id.btnKey0);
+        edtTinh = (EditText) view.findViewById(R.id.edtDisplay);
+
+        btn0 = (Button) view.findViewById(R.id.btnKey0);
         btn0.setOnClickListener(this);
 
-        Button btnPhay = (Button) view.findViewById(R.id.btnKeyDot);
-        btnPhay.setOnClickListener(this);
+        btnDot = (Button) view.findViewById(R.id.btnKeyDot);
+        btnDot.setOnClickListener(this);
 
-        Button btn30 = (Button) view.findViewById(R.id.btnKey000);
-        btn30.setOnClickListener(this);
+        btn000 = (Button) view.findViewById(R.id.btnKey000);
+        btn000.setOnClickListener(this);
 
-        Button btnBang = (Button) view.findViewById(R.id.btnKeyEqual);
-        btnBang.setOnClickListener(this);
+        btnEqual = (Button) view.findViewById(R.id.btnKeyEqual);
+        btnEqual.setOnClickListener(this);
 
-        Button btn1 = (Button) view.findViewById(R.id.btnKey1);
+        btn1 = (Button) view.findViewById(R.id.btnKey1);
         btn1.setOnClickListener(this);
 
-        Button btn2 = (Button) view.findViewById(R.id.btnKey2);
+        btn2 = (Button) view.findViewById(R.id.btnKey2);
         btn2.setOnClickListener(this);
 
-        Button btn3 = (Button) view.findViewById(R.id.btnKey3);
+        btn3 = (Button) view.findViewById(R.id.btnKey3);
         btn3.setOnClickListener(this);
 
-        Button btn4 = (Button) view.findViewById(R.id.btnKey4);
+        btn4 = (Button) view.findViewById(R.id.btnKey4);
         btn4.setOnClickListener(this);
 
-        Button btn5 = (Button) view.findViewById(R.id.btnKey5);
+        btn5 = (Button) view.findViewById(R.id.btnKey5);
         btn5.setOnClickListener(this);
 
-        Button btn6 = (Button) view.findViewById(R.id.btnKey6);
+        btn6 = (Button) view.findViewById(R.id.btnKey6);
         btn6.setOnClickListener(this);
 
-        Button btnTru = (Button) view.findViewById(R.id.btnKeyMinus);
-        btnTru.setOnClickListener(this);
+        btnMinus = (Button) view.findViewById(R.id.btnKeyMinus);
+        btnMinus.setOnClickListener(this);
 
-        Button btn7 = (Button) view.findViewById(R.id.btnKey7);
+        btn7 = (Button) view.findViewById(R.id.btnKey7);
         btn7.setOnClickListener(this);
 
-        Button btn8 = (Button) view.findViewById(R.id.btnKey8);
+        btn8 = (Button) view.findViewById(R.id.btnKey8);
         btn8.setOnClickListener(this);
 
-        Button btn9 = (Button) view.findViewById(R.id.btnKey9);
+        btn9 = (Button) view.findViewById(R.id.btnKey9);
         btn9.setOnClickListener(this);
 
-        Button btnPlus = (Button) view.findViewById(R.id.btnKeyPlus);
+        btnPlus = (Button) view.findViewById(R.id.btnKeyPlus);
         btnPlus.setOnClickListener(this);
 
-        Button btnC = (Button) view.findViewById(R.id.btnKeyC);
+        btnC = (Button) view.findViewById(R.id.btnKeyC);
         btnC.setOnClickListener(this);
 
-        Button btnMulti = (Button) view.findViewById(R.id.btnKeyMulti);
+        btnMulti = (Button) view.findViewById(R.id.btnKeyMulti);
         btnMulti.setOnClickListener(this);
 
-        Button btnDivide = (Button) view.findViewById(R.id.btnKeyDivide);
+        btnDivide = (Button) view.findViewById(R.id.btnKeyDivide);
         btnDivide.setOnClickListener(this);
 
-        ImageButton btnBack = (ImageButton) view.findViewById(R.id.btnKeyBack);
+        btnBack = (ImageButton) view.findViewById(R.id.btnKeyBack);
         btnBack.setOnClickListener(this);
+        
         return view;
     }
 
     @Override
     public void onClick(View v) {
-        EditText edtTinh = (EditText) v.findViewById(R.id.edtDisplay);
-        Button btnChangeBang = (Button) v.findViewById(R.id.btnKeyEqual);
         String text;
         String xong = "OK";
         String bang = "=";
@@ -195,7 +224,7 @@ public class Calculator extends Fragment implements View.OnClickListener {
                 break;
 
             case R.id.btnKeyEqual:
-                if (btnChangeBang.getText().toString().equals("=")){
+                if (btnEqual.getText().toString().equals("=")){
                     String result = Double.toString((double)Math.round(eval(String.valueOf(edtTinh.getText()))*10)/10);
                     String s;
                     //cat .0
@@ -208,27 +237,31 @@ public class Calculator extends Fragment implements View.OnClickListener {
                         }
                     }
 
-                    btnChangeBang.setText(xong);
+                    btnEqual.setText(xong);
                     edtTinh.setText(result);
                 }else {
                     String str = String.valueOf(edtTinh.getText());
                     mCallback.passData(str);
+//                    Intent intent = new Intent(getActivity().getBaseContext(),
+//                            MainActivity.class);
+//                    intent.putExtra("message", str);
+//                    getActivity().startActivity(intent);
+
 //                    final Intent data = new Intent();
 //                    String str = String.valueOf(edtTinh.getText());
 //                    data.putExtra(EXTRA_DATA, str);
 //                    setResult(RESULT_OK, data);
 //                    finish();
                 }
-
                 break;
         }
         //doi phim = thanh chu xong
         String curText = String.valueOf(edtTinh.getText());
         if ((!curText.contains("+"))&&(!curText.contains("-"))&&(!curText.contains("*"))&&(!curText.contains("/"))){
-            btnChangeBang.setText(xong);
+            btnEqual.setText(xong);
 
         } else {
-            btnChangeBang.setText(bang);
+            btnEqual.setText(bang);
         }
         edtTinh.setSelection(edtTinh.length()); //set cursor cuoi text
 

@@ -2,7 +2,9 @@ package com.example.nguyennam.financialmanagement;
 
 import android.content.Intent;
 import android.support.v4.app.FragmentActivity;
+import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTabHost;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -28,6 +30,9 @@ public class MainActivity extends FragmentActivity implements Calculator.DataPas
         tabHost.addTab(tabHost.newTabSpec("tab2").setIndicator("Tab2."),
                 IncomeDetail.class, null);
 
+//        Intent intent = getIntent();
+//        String message = intent.getStringExtra("message");
+
     }
 
 
@@ -35,10 +40,25 @@ public class MainActivity extends FragmentActivity implements Calculator.DataPas
     public void passData(String data) {
         ExpenseDetail expenseDetail = new ExpenseDetail ();
         Bundle args = new Bundle();
-        args.putString(ExpenseDetail.DATA_RECEIVE, data);
+        args.putString("data", data);
         expenseDetail.setArguments(args);
-        getFragmentManager().beginTransaction()
-                .replace(R.id.realtabcontent, expenseDetail)
-                .commit();
+        Log.d(TAG, "passData: " + data);
+
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+
+        fragmentTransaction.replace(R.id.realtabcontent, expenseDetail, "Expense Detail");
+        fragmentTransaction.addToBackStack(null);
+        fragmentTransaction.commit();
+    }
+
+    public void replaceFragment() {
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+
+        Calculator calculator = new Calculator();
+        fragmentTransaction.replace(R.id.realtabcontent, calculator, "Calculator...");
+        fragmentTransaction.addToBackStack(null);
+        fragmentTransaction.commit();
     }
 }
