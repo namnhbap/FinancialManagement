@@ -13,7 +13,7 @@ import android.widget.TextView;
  * Created by NguyenNam on 1/10/2017.
  */
 
-public class ExpenseDetail extends Fragment {
+public class ExpenseDetail extends Fragment{
 
     Context context;
     TextView txtAmount;
@@ -28,11 +28,12 @@ public class ExpenseDetail extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.expense_detail, container, false);
+        final Calculator calculator = new Calculator();
         txtAmount = (TextView) view.findViewById(R.id.txtAmount);
         txtAmount.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ((MainActivity) context).replaceFragment();
+                ((MoneyRecords) context).replaceFragment(calculator);
             }
         });
 
@@ -49,4 +50,5 @@ public class ExpenseDetail extends Fragment {
 //        String data = getArguments().getString("data");
 //        txtAmount.setText(data);
     }
+
 }

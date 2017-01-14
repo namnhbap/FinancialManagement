@@ -20,4 +20,15 @@
     <string name="Key000">000</string>
     <string name="KeyDone">OK</string>
     <string name="noname" />
+    <string name="Records">Ghi chép</string>
+    <string name="Accounts">Tài khoản</string>
+    <string name="Budget">Hạn mức chi</string>
+    <string name="Reports">Báo cáo</string>
+    <string name="Expense">Chi tiền</string>
+    <string name="Income">Thu tiền</string>
+    <string name="SoTien">Số tiền</string>
+    <string name="MucChi">Mục chi</string>
+    <string name="tuTaiKhoan">Từ tài khoản</string>
+    <string name="Date">Ngày</string>
+    <string name="Event">Sự kiện</string>
 </resources>

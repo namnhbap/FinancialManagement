@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     tools:context="com.example.nguyennam.financialmanagement.MainActivity">
 
-    <android.support.v4.app.FragmentTabHost
+    <TabHost
         android:id="@android:id/tabhost"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -21,12 +21,6 @@
 
             <FrameLayout
                 android:id="@android:id/tabcontent"
-                android:layout_width="0dp"
-                android:layout_height="0dp"
-                android:layout_weight="0"/>
-
-            <FrameLayout
-                android:id="@+id/realtabcontent"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight="5"/>
@@ -38,6 +32,6 @@
             </TabWidget>
 
         </LinearLayout>
-    </android.support.v4.app.FragmentTabHost>
+    </TabHost>
 
 </LinearLayout>

@@ -1,27 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="10dp"
     android:background="@color/BackgroundForm">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="10dp">
 
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:layout_marginBottom="10dp">
-
-        <FrameLayout
-            android:id="@+id/tabHeader"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="This is Header Fragment"
-                android:textSize="25sp"/>
-        </FrameLayout>
 
         <RelativeLayout
             android:id="@+id/rlInputMoney"
@@ -49,7 +42,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1.0"
-                android:text="So tien"
+                android:hint="@string/SoTien"
                 style="@style/InputMoneyKeyboard"
                 android:layout_centerVertical="true"
                 android:layout_alignParentLeft="true"
@@ -85,7 +78,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Muc chi"
+                    android:text="@string/MucChi"
                     android:clickable="false"
                     android:layout_marginLeft="5dp"
                     android:layout_alignParentLeft="true"
@@ -95,7 +88,7 @@
                     android:id="@+id/txtExpenseType"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="An uong"
+                    android:text="Ăn uống"
                     android:clickable="false"
                     android:layout_toLeftOf="@id/igmCategory"
                     android:layout_centerVertical="true"
@@ -126,7 +119,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Dien giai"
+                    android:text="Diễn giải"
                     android:clickable="false"
                     android:layout_marginLeft="5dp"
                     android:layout_alignParentLeft="true"
@@ -136,7 +129,7 @@
                     android:id="@+id/txtRelationTitle"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="abc"
+                    android:text="pizza"
                     android:clickable="false"
                     android:layout_toLeftOf="@id/igmRelation"
                     android:layout_centerVertical="true"
@@ -170,7 +163,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Tu tai khoan"
+                    android:text="@string/tuTaiKhoan"
                     android:clickable="false"
                     android:layout_marginLeft="5dp"
                     android:layout_alignParentLeft="true"
@@ -180,7 +173,7 @@
                     android:id="@+id/txtAccountName"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Vi"
+                    android:text="Ví"
                     android:clickable="false"
                     android:layout_toLeftOf="@id/igmSelectAccount"
                     android:layout_centerVertical="true"
@@ -211,7 +204,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Ngay"
+                    android:text="@string/Date"
                     android:clickable="false"
                     android:layout_marginLeft="5dp"
                     android:layout_alignParentLeft="true"
@@ -252,7 +245,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Su kien"
+                    android:text="@string/Event"
                     android:clickable="false"
                     android:layout_marginLeft="5dp"
                     android:layout_alignParentLeft="true"
@@ -262,7 +255,7 @@
                     android:id="@+id/txtExpenseEvent"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="sn"
+                    android:text="sinh nhật"
                     android:clickable="false"
                     android:layout_toLeftOf="@id/igmExpenseEvent"
                     android:layout_centerVertical="true"
@@ -282,21 +275,20 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1.0"
                 android:gravity="center"
-                android:paddingBottom="5dp"
-                android:paddingTop="5dp">
+                android:padding="10dp">
                 <ImageView
-                    android:layout_width="25dp"
-                    android:layout_height="20dp"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
                     android:src="@drawable/save_icon_button"/>
                 <TextView
                     android:id="@+id/txtSave"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     style="@style/TextViewStyle"
-                    android:text="Luu"/>
+                    android:text="Ghi"/>
             </LinearLayout>
         </LinearLayout>
 
     </LinearLayout>
-
-</ScrollView>
+    </ScrollView>
+</LinearLayout>
