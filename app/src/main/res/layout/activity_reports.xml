@@ -83,7 +83,7 @@
                 android:background="@color/Line" />
 
             <RelativeLayout
-                android:id="@+id/rlRelation"
+                android:id="@+id/rlDescription"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="5dp"
@@ -111,7 +111,7 @@
                     android:text="@string/DienGiai" />
 
                 <TextView
-                    android:id="@+id/txtRelationTitle"
+                    android:id="@+id/txtDescription"
                     style="@style/FormEditValue"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"

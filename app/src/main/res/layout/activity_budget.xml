@@ -35,10 +35,11 @@
             android:id="@+id/lbBudget"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_toRightOf="@id/lnAddBudget"
+            android:layout_toLeftOf="@id/lnAddBudget"
             android:layout_alignParentTop="true"
             android:layout_alignParentBottom="true"
             android:text="@string/Budget"
+            android:layout_marginLeft="40dp"
             android:gravity="center"
             style="@style/TextViewStyleBold"/>
     </RelativeLayout>

@@ -5,10 +5,10 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.SearchView;
 import android.view.Menu;
 import android.view.View;
 import android.widget.ExpandableListView;
+import android.widget.SearchView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -36,19 +36,16 @@ public class ExpenseCategory extends AppCompatActivity implements SearchView.OnQ
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.expense_category);
-
-//        SearchManager searchManager = (SearchManager) getSystemService(Context.SEARCH_SERVICE);
-//        search = (SearchView) findViewById(R.id.search);
-//        search.setSearchableInfo(searchManager.getSearchableInfo(getComponentName()));
-//        search.setIconifiedByDefault(false);
-//        search.setOnQueryTextListener(this);
-//        search.setOnCloseListener(this);
-
+        SearchManager searchManager = (SearchManager) getSystemService(Context.SEARCH_SERVICE);
+        search = (SearchView) findViewById(R.id.search);
+        search.setSearchableInfo(searchManager.getSearchableInfo(getComponentName()));
+        search.setIconifiedByDefault(false);
+        search.setOnQueryTextListener(this);
+        search.setOnCloseListener(this);
         //display the list
         displayList();
         //expand all Groups
         expandAll();
-
         myList.setOnGroupClickListener(new ExpandableListView.OnGroupClickListener() {
             @Override
             public boolean onGroupClick(ExpandableListView parent, View v, int groupPosition, long id) {
@@ -62,24 +59,20 @@ public class ExpenseCategory extends AppCompatActivity implements SearchView.OnQ
                 return false;
             }
         });
-
         myList.setOnChildClickListener(new ExpandableListView.OnChildClickListener() {
             @Override
             public boolean onChildClick(ExpandableListView parent, View v, int groupPosition, int childPosition, long id) {
                 TextView textView = (TextView) v.findViewById(R.id.childrow);
                 String childrow = (String) textView.getText();
                 Toast.makeText(getApplicationContext(), "child clicked " + childrow , Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent();
+                intent.putExtra(Constant.KEY_CATEGORY, childrow);
+                setResult(RESULT_OK, intent);
+                finish();
                 return false;
             }
         });
-
-//        Intent intent = new Intent();
-//        intent.putExtra("mockdata", String.valueOf("abc"));
-//        setResult(RESULT_OK, intent);
-//        finish();
-
     }
-
 
     //method to expand all groups
     private void expandAll() {
@@ -91,17 +84,14 @@ public class ExpenseCategory extends AppCompatActivity implements SearchView.OnQ
 
     //method to expand all groups
     private void displayList() {
-
         //display the list
         loadSomeData();
-
         //get reference to the ExpandableListView
         myList = (ExpandableListView) findViewById(R.id.expandableCategory);
         //create the adapter by passing your ArrayList data
         listAdapter = new MyListAdapter(ExpenseCategory.this, categoryGroupList);
         //attach the adapter to the list
         myList.setAdapter(listAdapter);
-
     }
 
     private void loadSomeData() {
@@ -121,23 +111,23 @@ public class ExpenseCategory extends AppCompatActivity implements SearchView.OnQ
 
         categoryGroup = new CategoryGroup(myGroupList.get(0), getChildList(listAnUong));
         categoryGroupList.add(categoryGroup);
-        categoryGroup = new CategoryGroup(myGroupList.get(1), getChildList(listConCai));
+        categoryGroup = new CategoryGroup(myGroupList.get(1), getChildList(listDiLai));
         categoryGroupList.add(categoryGroup);
         categoryGroup = new CategoryGroup(myGroupList.get(2), getChildList(listDichVuSH));
         categoryGroupList.add(categoryGroup);
-        categoryGroup = new CategoryGroup(myGroupList.get(3), getChildList(listDiLai));
+        categoryGroup = new CategoryGroup(myGroupList.get(3), getChildList(listConCai));
         categoryGroupList.add(categoryGroup);
-        categoryGroup = new CategoryGroup(myGroupList.get(4), getChildList(listHieuHi));
+        categoryGroup = new CategoryGroup(myGroupList.get(4), getChildList(listTrangPhuc));
         categoryGroupList.add(categoryGroup);
-        categoryGroup = new CategoryGroup(myGroupList.get(5), getChildList(listHuongThu));
+        categoryGroup = new CategoryGroup(myGroupList.get(5), getChildList(listHieuHi));
         categoryGroupList.add(categoryGroup);
         categoryGroup = new CategoryGroup(myGroupList.get(6), getChildList(listNhaCua));
         categoryGroupList.add(categoryGroup);
-        categoryGroup = new CategoryGroup(myGroupList.get(7), getChildList(listPhatTrien));
+        categoryGroup = new CategoryGroup(myGroupList.get(7), getChildList(listHuongThu));
         categoryGroupList.add(categoryGroup);
         categoryGroup = new CategoryGroup(myGroupList.get(8), getChildList(listSucKhoe));
         categoryGroupList.add(categoryGroup);
-        categoryGroup = new CategoryGroup(myGroupList.get(9), getChildList(listTrangPhuc));
+        categoryGroup = new CategoryGroup(myGroupList.get(9), getChildList(listPhatTrien));
         categoryGroupList.add(categoryGroup);
     }
 

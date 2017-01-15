@@ -98,16 +98,13 @@ public class MyListAdapter extends BaseExpandableListAdapter {
     }
 
     public void filterData(String query){
-
         query = query.toLowerCase();
         Log.v("MyListAdapter", String.valueOf(categoryGroups.size()));
         categoryGroups.clear();
-
         if(query.isEmpty()){
             categoryGroups.addAll(originalList);
         }
         else {
-
             for(CategoryGroup categoryGroup: originalList){
 
                 ArrayList<CategoryChild> categoryChildArrayList = categoryGroup.getCategoryChildList();
@@ -123,7 +120,6 @@ public class MyListAdapter extends BaseExpandableListAdapter {
                 }
             }
         }
-
         Log.v("MyListAdapter", String.valueOf(categoryGroups.size()));
         notifyDataSetChanged();
     }
