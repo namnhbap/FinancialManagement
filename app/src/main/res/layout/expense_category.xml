@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/activity_accounts"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context="com.example.nguyennam.financialmanagement.Accounts">
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
 
     <RelativeLayout
         android:id="@+id/tabHeader"
@@ -13,18 +10,18 @@
         android:background="@drawable/selector_layout_green">
 
         <ImageView
-            android:id="@+id/btnChangeAccount"
+            android:id="@+id/btnBack"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/edit"
-            android:paddingLeft="-20dp"
-            android:paddingRight="-20dp"
+            android:src="@drawable/ic_action_back"
+            android:paddingLeft="-10dp"
+            android:paddingRight="-10dp"
             android:layout_alignParentTop="true"
             android:layout_alignParentBottom="true"
             android:layout_alignParentLeft="true"/>
 
         <LinearLayout
-            android:id="@+id/lnAddAccount"
+            android:id="@+id/lnAddCategory"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentTop="true"
@@ -32,7 +29,7 @@
             android:layout_alignParentRight="true">
 
             <ImageView
-                android:id="@+id/btnAddAccount"
+                android:id="@+id/btnAddCategory"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:paddingTop="2dp"
@@ -43,22 +40,31 @@
         </LinearLayout>
 
         <TextView
-            android:id="@+id/lbAccount"
+            android:id="@+id/lbCategory"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_toRightOf="@id/btnChangeAccount"
-            android:layout_toLeftOf="@id/lnAddAccount"
+            android:layout_toRightOf="@id/btnBack"
+            android:layout_toLeftOf="@id/lnAddCategory"
             android:layout_alignParentTop="true"
             android:layout_alignParentBottom="true"
-            android:text="@string/Accounts"
+            android:text="@string/Category"
             android:gravity="center"
             style="@style/TextViewStyleBold"/>
     </RelativeLayout>
 
-    <ListView
-        android:id="@android:id/list"
+    <SearchView
+        android:id="@+id/search"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/tabHeader"/>
+        android:queryHint="@string/search">
 
-</RelativeLayout>
+    </SearchView>
+
+    <ExpandableListView
+        android:id="@+id/expandableCategory"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+    </ExpandableListView>
+
+</LinearLayout>

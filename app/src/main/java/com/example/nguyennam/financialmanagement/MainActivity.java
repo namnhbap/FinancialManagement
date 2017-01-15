@@ -21,7 +21,6 @@ import android.widget.TextView;
 public class MainActivity extends TabActivity{
 
     private static final String TAG = "Nam";
-    private static final int REQUEST_CODE_EXAMPLE = 0x9345;
     TabHost tabHost;
 
     @Override

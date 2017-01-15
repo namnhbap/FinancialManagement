@@ -1,13 +1,17 @@
 package com.example.nguyennam.financialmanagement;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
+
 
 /**
  * Created by NguyenNam on 1/10/2017.
@@ -17,6 +21,7 @@ public class ExpenseDetail extends Fragment{
 
     Context context;
     TextView txtAmount;
+    TextView txtExpenseType;
 
     @Override
     public void onAttach(Context context) {
@@ -30,10 +35,19 @@ public class ExpenseDetail extends Fragment{
         View view = inflater.inflate(R.layout.expense_detail, container, false);
         final Calculator calculator = new Calculator();
         txtAmount = (TextView) view.findViewById(R.id.txtAmount);
+        txtExpenseType = (TextView) view.findViewById(R.id.txtExpenseType);
+
         txtAmount.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 ((MoneyRecords) context).replaceFragment(calculator);
+            }
+        });
+        RelativeLayout rlSelectCategory = (RelativeLayout) view.findViewById(R.id.rlSelectCategory);
+        rlSelectCategory.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v){
+                ((MoneyRecords) context).startNewActivity(context, ExpenseCategory.class);
             }
         });
 
@@ -45,10 +59,10 @@ public class ExpenseDetail extends Fragment{
         super.onStart();
         Bundle bundle = getArguments();
         if (bundle != null) {
-            txtAmount.setText(bundle.getString("data"));
+            txtAmount.setText(bundle.getString(Constant.KEY_MONEY));
+            Log.d(Constant.TAG, "onStart: " + bundle.getString(Constant.KEY_MONEY));
+            txtExpenseType.setText(bundle.getString(Constant.KEY_CATEGORY));
+            Log.d(Constant.TAG, "onStart: " + bundle.getString(Constant.KEY_CATEGORY));
         }
-//        String data = getArguments().getString("data");
-//        txtAmount.setText(data);
     }
-
 }

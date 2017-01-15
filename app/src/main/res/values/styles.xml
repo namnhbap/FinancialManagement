@@ -35,6 +35,11 @@
         <item name="android:textStyle">normal</item>
         <item name="android:textColor">#ffffffff</item>
     </style>
+    <style name="TextViewStyleBold">
+        <item name="android:textSize">22.0sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">#ffffffff</item>
+    </style>
     <style name="TextViewStyleSpinner">
         <item name="android:textSize">20.0sp</item>
         <item name="android:textStyle">bold</item>

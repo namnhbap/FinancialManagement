@@ -42,8 +42,6 @@ public class Calculator extends Fragment implements View.OnClickListener {
     Button btnDivide;
     ImageButton btnBack;
     EditText edtTinh;
-
-    public static final String EXTRA_DATA = "EXTRA_DATA";
     DataPassListener mCallback;
 
     @Override

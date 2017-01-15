@@ -31,4 +31,77 @@
     <string name="tuTaiKhoan">Từ tài khoản</string>
     <string name="Date">Ngày</string>
     <string name="Event">Sự kiện</string>
+    <string name="MucThu">Mục thu</string>
+    <string name="DienGiai">Diễn giải</string>
+    <string name="VaoTaiKhoan">Vào tài khoản</string>
+    <string name="Category">Hạng mục chi</string>
+    <string name="search">Tìm kiếm</string>
+    <string-array name="group_row_category">
+        <item>Ăn uống</item>
+        <item>Đi lại</item>
+        <item>Dịch vụ sinh hoạt</item>
+        <item>Con cái</item>
+        <item>Trang phục</item>
+        <item>Hiếu hỉ</item>
+        <item>Nhà cửa</item>
+        <item>Hưởng thụ</item>
+        <item>Sức khỏe</item>
+        <item>Phát triển bản thân</item>
+    </string-array>
+    <string-array name="child_row_anuong">
+        <item>Cafe</item>
+        <item>Đi chợ/Siêu thị</item>
+        <item>Ăn tiệm</item>
+    </string-array>
+    <string-array name="child_row_dilai">
+        <item>Xăng xe</item>
+        <item>Sửa chữa</item>
+        <item>Bảo hiểm xe</item>
+        <item>Taxi</item>
+        <item>Xe khách</item>
+    </string-array>
+    <string-array name="child_row_dichvusinhhoat">
+        <item>Điện nước</item>
+        <item>Internet</item>
+        <item>Điện thoại di động</item>
+        <item>Gas</item>
+        <item>Truyền hình</item>
+    </string-array>
+    <string-array name="child_row_concai">
+        <item>Học phí</item>
+        <item>Sách vở</item>
+        <item>Sữa</item>
+        <item>Đồ chơi</item>
+        <item>Tiêu vặt</item>
+    </string-array>
+    <string-array name="child_row_trangphuc">
+        <item>Quần áo</item>
+        <item>Giày dép</item>
+        <item>Phụ kiện khác</item>
+    </string-array>
+    <string-array name="child_row_hieuhi">
+        <item>Cưới xin</item>
+        <item>Ma chay</item>
+        <item>Thăm hỏi</item>
+        <item>Biếu tặng</item>
+    </string-array>
+    <string-array name="child_row_nhacua">
+        <item>Mua sắm đồ đạc</item>
+        <item>Thuê nhà</item>
+        <item>Sửa nhà</item>
+    </string-array>
+    <string-array name="child_row_huongthu">
+        <item>Vui chơi giải trí</item>
+        <item>Du lịch</item>
+        <item>Làm đẹp</item>
+    </string-array>
+    <string-array name="child_row_suckhoe">
+        <item>Khám chữa bệnh</item>
+        <item>Thuốc men</item>
+        <item>Thể thao</item>
+    </string-array>
+    <string-array name="child_row_phattrienbanthan">
+        <item>Học hành</item>
+        <item>Giao lưu, quan hệ</item>
+    </string-array>
 </resources>
