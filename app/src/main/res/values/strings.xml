@@ -104,4 +104,9 @@
         <item>Học hành</item>
         <item>Giao lưu, quan hệ</item>
     </string-array>
+    <string-array name="accounts">
+        <item>Ví</item>
+        <item>ATM</item>
+        <item>Tiết kiệm</item>
+    </string-array>
 </resources>

@@ -33,6 +33,7 @@ public class ExpenseDetail extends Fragment implements View.OnClickListener {
     final Calculator calculator = new Calculator();
     final Description description = new Description();
     final ExpenseEvent expenseEvent = new ExpenseEvent();
+    final ListAccount listAccount = new ListAccount();
 
     @Override
     public void onAttach(Context context) {
@@ -113,6 +114,7 @@ public class ExpenseDetail extends Fragment implements View.OnClickListener {
                 ((MoneyRecords) context).replaceFragment(description);
                 break;
             case R.id.rlSelectAccount:
+                ((MoneyRecords) context).replaceFragmentListAccount(listAccount);
                 break;
             case R.id.rlSelectTime:
                 new DatePickerDialog(context, date, myCalendar.get(Calendar.YEAR),

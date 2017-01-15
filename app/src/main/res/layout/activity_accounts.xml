@@ -55,10 +55,11 @@
             style="@style/TextViewStyleBold"/>
     </RelativeLayout>
 
-    <ListView
-        android:id="@android:id/list"
+    <FrameLayout
+        android:id="@+id/frameAccount"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/tabHeader"/>
+        android:layout_height="match_parent"
+        android:layout_below="@id/tabHeader">
+    </FrameLayout>
 
 </RelativeLayout>

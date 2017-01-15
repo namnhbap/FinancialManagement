@@ -13,6 +13,8 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 
+import com.example.nguyennam.financialmanagement.bean.AccountRecyclerView;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -24,6 +26,7 @@ public class MoneyRecords extends FragmentActivity implements
         AdapterView.OnItemSelectedListener, Calculator.DataPassListener, Description.DataDescription, ExpenseEvent.EventDescription {
     private static final int REQUEST_CODE = 123;
     private Bundle bundle = new Bundle();
+    ArrayList<AccountRecyclerView> accounts = MockData.getData();
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -128,6 +131,16 @@ public class MoneyRecords extends FragmentActivity implements
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
         fragmentTransaction.replace(R.id.formInputMoney, expenseDetail, "ExpenseDetail");
 //        fragmentTransaction.addToBackStack(null);
+        fragmentTransaction.commit();
+    }
+
+    public void replaceFragmentListAccount(ListAccount listAccount) {
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        bundle.putSerializable("account", accounts);
+        listAccount.setArguments(bundle);
+        fragmentTransaction.replace(R.id.formInputMoney, listAccount, "SomeFragment");
+        fragmentTransaction.addToBackStack(null);
         fragmentTransaction.commit();
     }
 }
