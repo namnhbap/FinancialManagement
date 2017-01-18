@@ -46,6 +46,6 @@ public class ListAccount extends Fragment implements MyRecyclerviewAdapter.MyOnC
 
     @Override
     public void onClick(int position) {
-//        ((Accounts) context).replaceFragment(position);
+        ((MoneyRecords) context).selectAccount(position);
     }
 }

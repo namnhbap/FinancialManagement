@@ -1,13 +1,19 @@
 package com.example.nguyennam.financialmanagement.bean;
 
+import java.io.Serializable;
+
 /**
  * Created by NguyenNam on 1/16/2017.
  */
 
-public class AccountRecyclerView {
+public class AccountRecyclerView implements Serializable{
     private int id;
     private String accountType;
     private long amountMoney;
+
+    public AccountRecyclerView(){
+
+    }
 
     public AccountRecyclerView(int id, String accountType, long amountMoney) {
         this.id = id;

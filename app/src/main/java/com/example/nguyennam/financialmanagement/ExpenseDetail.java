@@ -9,8 +9,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.DatePicker;
+import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+
+import com.example.nguyennam.financialmanagement.bean.ExpenseBEAN;
+import com.example.nguyennam.financialmanagement.database.ExpenseDAO;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -34,7 +38,7 @@ public class ExpenseDetail extends Fragment implements View.OnClickListener {
     final Description description = new Description();
     final ExpenseEvent expenseEvent = new ExpenseEvent();
     final ListAccount listAccount = new ListAccount();
-
+    ExpenseBEAN expenseBEAN = new ExpenseBEAN();
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
@@ -63,6 +67,8 @@ public class ExpenseDetail extends Fragment implements View.OnClickListener {
         rlSelectTime.setOnClickListener(this);
         RelativeLayout rlExpenseEvent = (RelativeLayout) view.findViewById(R.id.rlExpenseEvent);
         rlExpenseEvent.setOnClickListener(this);
+        LinearLayout lnAddExpense = (LinearLayout) view.findViewById(R.id.lnAddExpense);
+        lnAddExpense.setOnClickListener(this);
         return view;
     }
 
@@ -82,6 +88,7 @@ public class ExpenseDetail extends Fragment implements View.OnClickListener {
             txtExpenseType.setText(bundle.getString(Constant.KEY_CATEGORY));
             txtDescription.setText(bundle.getString(Constant.KEY_DIENGIAI));
             txtExpenseEvent.setText(bundle.getString(Constant.KEY_EVENT));
+            txtAccountName.setText(bundle.getString(Constant.KEY_ACCOUNT));
         }
     }
 
@@ -122,6 +129,19 @@ public class ExpenseDetail extends Fragment implements View.OnClickListener {
                 break;
             case R.id.rlExpenseEvent:
                 ((MoneyRecords) context).replaceFragment(expenseEvent);
+                break;
+            case R.id.lnAddExpense:
+                expenseBEAN.set_amountMoney(String.valueOf(txtAmount.getText()));
+                expenseBEAN.set_expenseCategory(String.valueOf(txtExpenseType.getText()));
+                expenseBEAN.set_description(String.valueOf(txtDescription.getText()));
+                expenseBEAN.set_fromAccount(String.valueOf(txtAccountName.getText()));
+                expenseBEAN.set_expenseDate(String.valueOf(txtExpenseTime.getText()));
+                expenseBEAN.set_expenseEvent(String.valueOf(txtExpenseEvent.getText()));
+                ((MoneyRecords) context).addExpenseToDatabase(expenseBEAN);
+                txtAmount.setText("");
+                txtExpenseType.setText("");
+                txtDescription.setText("");
+                txtExpenseEvent.setText("");
                 break;
         }
     }

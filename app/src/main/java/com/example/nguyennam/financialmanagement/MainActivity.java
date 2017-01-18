@@ -27,13 +27,11 @@ public class MainActivity extends TabActivity{
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
         tabHost = (TabHost) findViewById(android.R.id.tabhost);
         addCustomTab(getApplicationContext(), getResources().getString(R.string.Records), getResources().getDrawable(R.drawable.note_selected), MoneyRecords.class, tabHost);
         addCustomTab(getApplicationContext(), getResources().getString(R.string.Accounts), getResources().getDrawable(R.drawable.wallet), Accounts.class, tabHost);
         addCustomTab(getApplicationContext(), getResources().getString(R.string.Budget), getResources().getDrawable(R.drawable.tab_budget), Budget.class, tabHost);
         addCustomTab(getApplicationContext(), getResources().getString(R.string.Reports), getResources().getDrawable(R.drawable.pie_chart), Reports.class, tabHost);
-
         tabHost.setOnTabChangedListener(new TabHost.OnTabChangeListener() {
             @Override
             public void onTabChanged(String s) {
@@ -85,17 +83,14 @@ public class MainActivity extends TabActivity{
                 }
             }
         });
-
     }
 
     private void addCustomTab(Context context, String labelId, Drawable drawable, Class<?> c, TabHost fth ) {
         View view = LayoutInflater.from(context).inflate(R.layout.tab_icon1, null);
         ImageView image = (ImageView) view.findViewById(R.id.img_icon1);
         TextView text = (TextView) view.findViewById(R.id.text_icon1);
-
         image.setImageDrawable(drawable);
         text.setText(labelId);
-
         TabHost.TabSpec spec = fth.newTabSpec(labelId);
         spec.setIndicator(view);
         spec.setContent(new Intent(this, c));

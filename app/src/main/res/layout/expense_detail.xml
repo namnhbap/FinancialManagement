@@ -264,7 +264,7 @@
             android:background="@drawable/customeditmoney"
             android:layout_marginTop="10dp">
             <LinearLayout
-                android:id="@+id/lnAdd"
+                android:id="@+id/lnAddExpense"
                 android:background="@drawable/selector_button_green"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

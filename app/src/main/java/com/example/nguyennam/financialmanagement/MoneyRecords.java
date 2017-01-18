@@ -8,12 +8,16 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.ImageView;
 import android.widget.Spinner;
 
 import com.example.nguyennam.financialmanagement.bean.AccountRecyclerView;
+import com.example.nguyennam.financialmanagement.bean.ExpenseBEAN;
+import com.example.nguyennam.financialmanagement.database.ExpenseDAO;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -27,11 +31,20 @@ public class MoneyRecords extends FragmentActivity implements
     private static final int REQUEST_CODE = 123;
     private Bundle bundle = new Bundle();
     ArrayList<AccountRecyclerView> accounts = MockData.getData();
+    ImageView imgHistory;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.money_records);
+        imgHistory = (ImageView) findViewById(R.id.imgHistory);
+        imgHistory.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MoneyRecords.this, HistoryExpenseIncome.class);
+                startActivity(intent);
+            }
+        });
         Spinner spinner = (Spinner) findViewById(R.id.spinner);
         spinner.setOnItemSelectedListener(this);
         // Spinner Drop down elements
@@ -68,10 +81,19 @@ public class MoneyRecords extends FragmentActivity implements
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
         fragmentTransaction.replace(R.id.formInputMoney, someFragment, "SomeFragment");
-        fragmentTransaction.addToBackStack(null);
+//        fragmentTransaction.addToBackStack(null);
         fragmentTransaction.commit();
     }
 
+    public void replaceFragmentListAccount(ListAccount listAccount) {
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        bundle.putSerializable("account", accounts);
+        listAccount.setArguments(bundle);
+        fragmentTransaction.replace(R.id.formInputMoney, listAccount, "SomeFragment");
+//        fragmentTransaction.addToBackStack(null);
+        fragmentTransaction.commit();
+    }
 
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
@@ -134,13 +156,24 @@ public class MoneyRecords extends FragmentActivity implements
         fragmentTransaction.commit();
     }
 
-    public void replaceFragmentListAccount(ListAccount listAccount) {
+    public void selectAccount(int position) {
+        Bundle bundle = new Bundle();
+        AccountRecyclerView accountById = MockData.getAccountById(position, accounts);
+        String accountType = accountById.getAccountType();
+        bundle.putString(Constant.KEY_ACCOUNT, accountType);
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-        bundle.putSerializable("account", accounts);
-        listAccount.setArguments(bundle);
-        fragmentTransaction.replace(R.id.formInputMoney, listAccount, "SomeFragment");
-        fragmentTransaction.addToBackStack(null);
+        ExpenseDetail expenseDetail = new ExpenseDetail();
+        expenseDetail.setArguments(bundle);
+        fragmentTransaction.replace(R.id.formInputMoney, expenseDetail, "SomeFragment");
+//        fragmentTransaction.addToBackStack(null);
         fragmentTransaction.commit();
+    }
+
+    public void addExpenseToDatabase(ExpenseBEAN expenseBEAN) {
+        ExpenseDAO expenseDAO = new ExpenseDAO(this);
+        expenseDAO.addExpense(expenseBEAN);
+        ExpenseBEAN a = expenseDAO.getExpense(1);
+        Log.d(Constant.TAG, "addExpenseToDatabase: " + a);
     }
 }
